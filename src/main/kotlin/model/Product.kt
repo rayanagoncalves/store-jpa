@@ -5,7 +5,7 @@ import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
-@Table(name = "produtos")
+@Table(name = "products")
 data class Product(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,11 +15,7 @@ data class Product(
     val price: BigDecimal,
     @Column(name = "created_at")
     val createdAt: LocalDate = LocalDate.now(),
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
     val category: Category
 ) {
-
-    enum class Category {
-        CELLPHONES, COMPUTING, BOOKS
-    }
 }
