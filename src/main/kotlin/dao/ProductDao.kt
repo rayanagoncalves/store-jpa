@@ -1,7 +1,7 @@
 package dao
 
-import model.Category
 import model.Product
+import java.math.BigDecimal
 import javax.persistence.EntityManager
 
 class ProductDao(private val entityManager: EntityManager) {
@@ -39,5 +39,12 @@ class ProductDao(private val entityManager: EntityManager) {
         return this.entityManager.createQuery(jpql, Product::class.java)
             .setParameter("name", categoryName)
             .resultList
+    }
+
+    fun findByPriceWithName(name: String): BigDecimal {
+        val jpql = "SELECT p.price FROM Product p WHERE p.name = :name"
+        return this.entityManager.createQuery(jpql, BigDecimal::class.java)
+            .setParameter("name", name)
+            .singleResult
     }
 }

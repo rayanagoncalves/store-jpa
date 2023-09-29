@@ -18,6 +18,9 @@ fun main() {
 
     val allProducts = productDao.findByCategoryName("CELLPHONES")
     allProducts.forEach{ println(it.name) }
+
+    val productPrice = productDao.findByPriceWithName("iphone")
+    println("Preço do produto: $productPrice")
 }
 
 fun registerProduct() {
