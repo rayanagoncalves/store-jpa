@@ -16,7 +16,7 @@ fun main() {
     val product = productDao.findById(1L)
     println(product.price)
 
-    val allProducts = productDao.findAll()
+    val allProducts = productDao.findByCategoryName("CELLPHONES")
     allProducts.forEach{ println(it.name) }
 }
 
